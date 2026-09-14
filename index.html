@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Kryzel Sensi — Free Fire Sensitivity</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#07090f;color:#fff}
+body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 20% 10%,#1b1640 0,transparent 35%),radial-gradient(circle at 85% 80%,#102d35 0,transparent 35%);pointer-events:none}
+.wrap{max-width:1050px;margin:auto;padding:22px;position:relative}.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.logo{font-size:25px;font-weight:900;letter-spacing:1px}.logo span{color:#00e5ff}.pill{border:1px solid #293344;padding:9px 14px;border-radius:30px;color:#9eefff;font-size:13px}
+.hero{margin-top:25px;padding:35px 24px;border:1px solid #20283a;border-radius:24px;background:linear-gradient(135deg,#0e1220cc,#0a111acc);box-shadow:0 20px 60px #0008}
+.badge{display:inline-block;color:#00e5ff;border:1px solid #00e5ff55;border-radius:20px;padding:7px 11px;font-size:12px}
+h1{font-size:clamp(38px,8vw,72px);line-height:.95;margin:18px 0 12px}.grad{background:linear-gradient(90deg,#fff,#00e5ff);-webkit-background-clip:text;color:transparent}
+.sub{color:#9ca8bc;max-width:650px;line-height:1.6}.btn{display:inline-block;margin-top:20px;background:#00e5ff;color:#061016;text-decoration:none;padding:13px 18px;border-radius:12px;font-weight:800;border:0;cursor:pointer}
+.grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:18px}.card{background:#0c111cdd;border:1px solid #20283a;border-radius:20px;padding:22px}
+.card h2{margin-top:0}.profile{display:flex;gap:15px;align-items:center}.avatar{width:70px;height:70px;border-radius:18px;background:linear-gradient(135deg,#00e5ff,#7c3cff);display:grid;place-items:center;font-size:27px;font-weight:900}
+label{display:block;color:#9ca8bc;font-size:13px;margin:14px 0 7px}select{width:100%;padding:13px;border-radius:11px;background:#080c14;color:white;border:1px solid #293344}
+.result{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}.stat{padding:15px;background:#111827;border-radius:13px;border:1px solid #20283a}.stat b{font-size:24px;color:#00e5ff}.premium{background:linear-gradient(135deg,#151025,#0b1820);border-color:#6b4cff66}.price{font-size:32px;font-weight:900;color:#ffd34e}.small{font-size:12px;color:#7f8ba0;line-height:1.5}
+footer{text-align:center;color:#687386;padding:28px 0;font-size:12px}@media(max-width:760px){.grid{grid-template-columns:1fr}.hero{padding:27px 18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="nav"><div class="logo">KRYZEL <span>SENSI</span></div><div class="pill">FREE FIRE • SETTINGS</div></nav>
+
+<section class="hero">
+<div class="badge">⚡ SMART SENSITIVITY GENERATOR</div>
+<h1>WELCOME TO <span class="grad">KRYZEL SENSI</span></h1>
+<p class="sub">Choose your device and RAM to generate a clean Free Fire sensitivity profile. Tune your controls and find a setup that feels comfortable on your phone.</p>
+<a class="btn" href="#generator">FIND MY SENSI ↓</a>
+</section>
+
+<div class="grid" id="generator">
+<section class="card">
+<h2>🎯 Find Your Device</h2>
+<label>Phone Model</label>
+<select id="device">
+<option>realme C100X</option><option>Samsung Galaxy A15</option><option>Redmi Note 13</option><option>Infinix Hot 40</option><option>TECNO Spark 20</option><option>iPhone 11</option><option>iPhone 13</option><option>Other Device</option>
+</select>
+<label>RAM</label>
+<select id="ram"><option>4 GB</option><option>6 GB</option><option>8 GB</option><option>12 GB</option></select>
+<button class="btn" style="width:100%" onclick="generate()">GENERATE SETTINGS</button>
+<div id="output" class="result" style="display:none">
+<div class="stat">General<br><b id="g">95</b></div><div class="stat">Red Dot<br><b id="r">90</b></div>
+<div class="stat">2× Scope<br><b id="s2">85</b></div><div class="stat">4× Scope<br><b id="s4">80</b></div>
+<div class="stat">Sniper<br><b id="sn">55</b></div><div class="stat">Free Look<br><b id="fl">75</b></div>
+</div>
+</section>
+
+<section class="card premium">
+<div class="profile"><div class="avatar">K</div><div><h2 style="margin:0">Kryzel Premium</h2><div class="small">Premium Sensi Package</div></div></div>
+<p class="small">Get a personalized sensitivity setup and support for your device.</p>
+<div class="price">15৳</div>
+<p class="small">Contact / Order: <b style="color:#fff">01796584364</b></p>
+<button class="btn" onclick="alert('Contact 01796584364 to order Premium Sensi.')">BUY PREMIUM</button>
+</section>
+</div>
+<footer>© 2026 Kryzel Sensi • Made for Free Fire players</footer>
+</div>
+<script>
+function generate(){
+ const d=document.getElementById('device').value,r=document.getElementById('ram').value;
+ let base= d.includes('iPhone')?96:(r==='12 GB'?98:r==='8 GB'?96:r==='6 GB'?94:91);
+ document.getElementById('g').textContent=base;
+ document.getElementById('r').textContent=Math.max(70,base-3);
+ document.getElementById('s2').textContent=Math.max(65,base-8);
+ document.getElementById('s4').textContent=Math.max(60,base-13);
+ document.getElementById('sn').textContent=Math.max(45,base-38);
+ document.getElementById('fl').textContent=Math.max(60,base-20);
+ document.getElementById('output').style.display='grid';
+}
+</script>
+</body>
+</html>
